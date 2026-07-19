@@ -46,7 +46,7 @@ export const projects = [
           es: "Recordatorios automáticos por correo a pacientes, agenda diaria a doctores, notificaciones en tiempo real (SSE) y reportes clínicos en PDF listos para imprimir.",
           en: "Automatic email reminders to patients, daily agenda to doctors, real-time notifications (SSE), and print-ready clinical PDF reports.",
         },
-        screenshot: { label: "aura-health.app/appointments", src: null },
+        screenshot: { label: "aura-health.app/appointments", src: '/images/aura-4.png' },
         reverse: false,
       },
     ],
