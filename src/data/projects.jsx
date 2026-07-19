@@ -1,146 +1,149 @@
 export const projects = [
-    {
-      id: 1,
-      title: "E-commerce con IA",
-      description: "Tienda online completa con recomendaciones personalizadas usando machine learning y chatbot integrado.",
-      level: "avanzado",
-      types: ["ia", "frontend", "backend"],
-      tech: ["React", "Node.js", "TensorFlow", "Stripe"],
-      time: "6-8 semanas",
-      price: "$3,500 - $6,000",
-      color: "pink",
-      features: ["Recomendaciones IA", "Chatbot inteligente", "Pasarela de pago", "Panel admin"]
+  {
+    slug: "aura-health",
+    title: "Aura Health",
+    tagline: {
+      es: "Sistema de gestión clínica: historia clínica electrónica + agenda médica",
+      en: "Clinical management system: electronic health records + appointment scheduling",
     },
-    {
-      id: 2,
-      title: "Landing Page Moderna",
-      description: "Landing page responsive con animaciones avanzadas, formularios y optimización SEO.",
-      level: "principiante",
-      types: ["frontend"],
-      tech: ["React", "Tailwind", "Framer Motion"],
-      time: "1-2 semanas",
-      price: "$400 - $800",
-      color: "green",
-      features: ["Animaciones fluidas", "Responsive design", "SEO optimizado", "Formulario contacto"]
+    status: { es: "Completado", en: "Completed" },
+    role: { es: "Desarrollador Full-stack", en: "Full-stack Developer" },
+    summary: {
+      es: "Reemplaza la gestión manual y dispersa de pacientes, citas e historias clínicas en un consultorio por una plataforma centralizada, con roles ADMIN/DOCTOR, interfaz minimalista en blanco y negro, y recordatorios automáticos por correo para doctores y pacientes.",
+      en: "Replaces the manual, scattered management of patients, appointments, and medical records in a clinic with a centralized platform, with ADMIN/DOCTOR roles, a minimalist black-and-white interface, and automatic email reminders for doctors and patients.",
     },
-    {
-      id: 3,
-      title: "Sistema de Reservas",
-      description: "Plataforma completa de agendamiento con notificaciones, pagos y gestión de clientes.",
-      level: "intermedio",
-      types: ["frontend", "backend"],
-      tech: ["Next.js", "PostgreSQL", "Stripe", "SendGrid"],
-      time: "4-5 semanas",
-      price: "$1,500 - $2,500",
-      color: "blue",
-      features: ["Calendario interactivo", "Pagos online", "Email notifications", "Dashboard"]
+
+    heroScreenshot: { label: "aura-health.app/dashboard", src: '/images/aura-1.png' },
+
+    showcase: [
+      {
+        title: {
+          es: "Historias clínicas y tratamientos con control real",
+          en: "Medical records and treatments with real control",
+        },
+        description: {
+          es: "Gestión de pacientes, historias clínicas y tratamientos con versionado y flujo de aprobación. El doctor-scoping asegura que cada doctor solo vea y edite lo suyo: el filtro se fuerza en el servidor, no en el cliente.",
+          en: "Management of patients, medical records, and treatments with versioning and an approval workflow. Doctor-scoping ensures each doctor only sees and edits their own data: the filter is enforced on the server, not the client.",
+        },
+        screenshot: { label: "aura-health.app/records", src: '/images/aura-2.png' },
+        reverse: false,
+      },
+      {
+        title: {
+          es: "Un dashboard que cambia según quién lo mira",
+          en: "A dashboard that changes depending on who's looking",
+        },
+        description: {
+          es: "Analíticas diferenciadas por rol: el ADMIN ve el negocio completo, el DOCTOR solo su propia práctica. Incluye clasificación automática de riesgo de pacientes.",
+          en: "Analytics differentiated by role: the ADMIN sees the whole business, the DOCTOR only their own practice. Includes automatic patient risk classification.",
+        },
+        screenshot: { label: "aura-health.app/dashboard", src: '/images/aura-3.png' },
+        reverse: true,
+      },
+      {
+        title: { es: "Nadie se pierde una cita", en: "No one misses an appointment" },
+        description: {
+          es: "Recordatorios automáticos por correo a pacientes, agenda diaria a doctores, notificaciones en tiempo real (SSE) y reportes clínicos en PDF listos para imprimir.",
+          en: "Automatic email reminders to patients, daily agenda to doctors, real-time notifications (SSE), and print-ready clinical PDF reports.",
+        },
+        screenshot: { label: "aura-health.app/appointments", src: null },
+        reverse: false,
+      },
+    ],
+
+    extraFeatures: [
+      { es: "Interfaz en blanco y negro, minimalista", en: "Minimalist black-and-white interface" },
+      { es: "Onboarding guiado (product tour)", en: "Guided onboarding (product tour)" },
+      { es: "Auditoría automática de acciones sensibles", en: "Automatic auditing of sensitive actions" },
+      { es: "Autenticación JWT + control de acceso por rol", en: "JWT auth + role-based access control" },
+    ],
+
+    architectureHighlights: [
+      {
+        icon: "GitBranch",
+        title: { es: "Monorepo de infraestructura", en: "Infrastructure monorepo" },
+        description: {
+          es: "3 repos Git independientes (infra, backend, frontend) orquestados con Docker Compose.",
+          en: "3 independent Git repos (infra, backend, frontend) orchestrated with Docker Compose.",
+        },
+      },
+      {
+        icon: "Layers",
+        title: { es: "Arquitectura limpia por capas", en: "Clean layered architecture" },
+        description: {
+          es: "domain → application → infrastructure → presentation, con auditoría automática vía un wrapper withAudit.",
+          en: "domain → application → infrastructure → presentation, with automatic auditing via a withAudit wrapper.",
+        },
+      },
+      {
+        icon: "ShieldCheck",
+        title: { es: "Doctor-scoping", en: "Doctor-scoping" },
+        description: {
+          es: "Cada doctor solo ve sus propios pacientes y citas; el filtro se fuerza en el servidor, nunca se confía en IDs del cliente.",
+          en: "Each doctor only sees their own patients and appointments; the filter is enforced server-side, client-supplied IDs are never trusted.",
+        },
+      },
+      {
+        icon: "Route",
+        title: { es: "Routing generado", en: "Generated routing" },
+        description: {
+          es: "sidebar.config.ts es la única fuente de verdad para nav + rutas, protegidas por rol con RoleGuard.",
+          en: "sidebar.config.ts is the single source of truth for nav + routes, protected by role with RoleGuard.",
+        },
+      },
+    ],
+
+    stack: {
+      backend: [
+        "Node.js (ESM)",
+        "Express 5",
+        "Prisma 7 + PostgreSQL",
+        "JWT + bcrypt",
+        "Zod",
+        "Winston",
+        "node-cron",
+        "PDFKit + Puppeteer",
+        "Swagger/OpenAPI",
+      ],
+      frontend: [
+        "React 19",
+        "TypeScript",
+        "Vite 7",
+        "React Router 7",
+        "Zustand",
+        "React Hook Form + Zod",
+        "Axios",
+        "Driver.js",
+      ],
+      devops: ["Docker Compose", "Git (3 repos)", "Mailpit (email dev)"],
+      quality: ["Jira (Scrum)", "SonarQube", "Jest + Supertest", "ESLint"],
     },
-    {
-      id: 4,
-      title: "API REST Escalable",
-      description: "Backend robusto con autenticación, base de datos optimizada y documentación completa.",
-      level: "intermedio",
-      types: ["backend"],
-      tech: ["Node.js", "Express", "MongoDB", "JWT"],
-      time: "3-4 semanas",
-      price: "$1,200 - $2,000",
-      color: "orange",
-      features: ["Auth seguro", "Rate limiting", "Documentación API", "Tests unitarios"]
+
+    metrics: [
+      { label: { es: "Repos independientes", en: "Independent repos" }, value: "3" },
+      { label: { es: "Módulos de dominio", en: "Domain modules" }, value: "14+" },
+      { label: { es: "Roles con scoping estricto", en: "Roles with strict scoping" }, value: "2" },
+      { label: { es: "Commits backend + frontend", en: "Backend + frontend commits" }, value: "150+" },
+    ],
+
+    links: {
+      demo: "https://aura-health-frontend-one.vercel.app/",
+      repos: {
+        infra: "https://github.com/Josedan32/infra",
+        backend: "https://github.com/Josedan32/aura-health-backend",
+        frontend: "https://github.com/Josedan32/aura-health-frontend",
+      },
     },
-    {
-      id: 5,
-      title: "Dashboard con Analytics IA",
-      description: "Panel de control con visualización de datos, predicciones con IA y reportes automáticos.",
-      level: "avanzado",
-      types: ["ia", "frontend", "backend"],
-      tech: ["React", "Python", "TensorFlow", "D3.js"],
-      time: "5-7 semanas",
-      price: "$2,800 - $5,000",
-      color: "pink",
-      features: ["Predicciones ML", "Gráficos interactivos", "Exportar reportes", "Alertas automáticas"]
+
+    demoAccess: {
+      email: "admin@aura.com",
+      password: "Admin123!",
+      note: {
+        es: "Cuenta de demostración con datos sintéticos (seed). No contiene información real de pacientes — uso exclusivo de entorno de desarrollo/demo.",
+        en: "Demo account with synthetic (seed) data. Contains no real patient information — for development/demo environment use only.",
+      },
     },
-    {
-      id: 6,
-      title: "Portfolio Interactivo",
-      description: "Sitio web personal con animaciones 3D, proyectos destacados y blog integrado.",
-      level: "principiante",
-      types: ["frontend"],
-      tech: ["React", "Three.js", "Tailwind"],
-      time: "2-3 semanas",
-      price: "$500 - $1,000",
-      color: "green",
-      features: ["Animaciones 3D", "Blog CMS", "Galería proyectos", "Contacto directo"]
-    },
-    {
-      id: 7,
-      title: "Chatbot Inteligente",
-      description: "Asistente virtual con procesamiento de lenguaje natural y aprendizaje continuo.",
-      level: "avanzado",
-      types: ["ia", "backend"],
-      tech: ["Python", "OpenAI", "FastAPI", "Redis"],
-      time: "4-6 semanas",
-      price: "$2,000 - $4,000",
-      color: "blue",
-      features: ["NLP avanzado", "Aprendizaje continuo", "Multi-idioma", "Integración WhatsApp"]
-    },
-    {
-      id: 8,
-      title: "CRM Personalizado",
-      description: "Sistema de gestión de clientes con automatizaciones, seguimiento y analytics.",
-      level: "intermedio",
-      types: ["frontend", "backend"],
-      tech: ["Vue.js", "Laravel", "MySQL"],
-      time: "5-6 semanas",
-      price: "$2,200 - $3,500",
-      color: "orange",
-      features: ["Gestión leads", "Automatizaciones", "Reportes ventas", "Email marketing"]
-    },
-    {
-      id: 9,
-      title: "App de Delivery",
-      description: "Plataforma completa para pedidos online con tracking en tiempo real y pagos.",
-      level: "avanzado",
-      types: ["frontend", "backend"],
-      tech: ["React Native", "Node.js", "Socket.io", "Google Maps"],
-      time: "8-10 semanas",
-      price: "$4,000 - $7,000",
-      color: "pink",
-      features: ["Tracking tiempo real", "Multi-restaurantes", "Pasarela pago", "App móvil"]
-    },
-    {
-      id: 10,
-      title: "Blog con CMS",
-      description: "Blog profesional con gestor de contenidos, SEO avanzado y newsletter.",
-      level: "principiante",
-      types: ["frontend", "backend"],
-      tech: ["Next.js", "Strapi", "Markdown"],
-      time: "2-3 semanas",
-      price: "$600 - $1,200",
-      color: "green",
-      features: ["CMS headless", "SEO optimizado", "Newsletter", "Comentarios"]
-    },
-    {
-      id: 11,
-      title: "Sistema de Facturación",
-      description: "Plataforma de facturación electrónica integrada con DIAN y contabilidad.",
-      level: "intermedio",
-      types: ["backend", "frontend"],
-      tech: ["Angular", "Java Spring", "PostgreSQL"],
-      time: "6-8 semanas",
-      price: "$2,500 - $4,500",
-      color: "blue",
-      features: ["Integración DIAN", "Multi-empresa", "Reportes contables", "Inventario"]
-    },
-    {
-      id: 12,
-      title: "Detector de Imágenes IA",
-      description: "Sistema de clasificación y detección de objetos en imágenes usando deep learning.",
-      level: "avanzado",
-      types: ["ia", "backend"],
-      tech: ["Python", "TensorFlow", "FastAPI", "OpenCV"],
-      time: "5-7 semanas",
-      price: "$2,800 - $5,500",
-      color: "orange",
-      features: ["Detección objetos", "Clasificación ML", "API REST", "Procesamiento batch"]
-    }
-  ];
+  },
+];
+
+export const getProjectBySlug = (slug) => projects.find((p) => p.slug === slug);

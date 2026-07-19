@@ -2,9 +2,8 @@ import { Navbar } from '../components/Nav/Navbar';
 import { HeroSection } from '../components/Hero/HeroSection';
 import { Footer } from '../components/Footer';
 import { AboutSection } from '../components/About/AboutSection';
-import { ServiceSection } from '../components/Service/ServiceSection';
+import { ProjectsSection } from '../components/Projects/ProjectsSection';
 import { ExperienceSection } from '../components/Experience/ExperienceSection';
-import { BlogSection } from '../components/Blog/BlogSections';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
@@ -54,22 +53,15 @@ export default function Portafolio() {
         <AboutSection />
       </div>
       
-      <div id="servicios" data-animate className="animate-section">
-        <ServiceSection />
+      <div id="proyectos" data-animate className="animate-section">
+        <ProjectsSection />
       </div>
-      
+
       <div id="experiencia" data-animate className="animate-section">
         <ExperienceSection />
       </div>
 
-      {/* <div id="proyectos" data-animate className="animate-section">
-      ProjectsShowcase
-      </div> */}
-      
-      <div id="Blog" data-animate className="animate-section">
-        <BlogSection />
-      </div>
-      <Footer />  
+      <Footer />
     </div>
   );
 }

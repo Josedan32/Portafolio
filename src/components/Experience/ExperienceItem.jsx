@@ -1,5 +1,6 @@
 import React from "react";
 import { Zap, Target, TrendingUp } from "lucide-react";
+import { useLanguage } from "../../i18n/useLanguage";
 
 export const ExperienceItem = ({
   company,
@@ -12,6 +13,7 @@ export const ExperienceItem = ({
   achievements,
   index,
 }) => {
+  const { language } = useLanguage();
   const colors = {
     emerald: {
       base: "from-emerald-500/10 to-green-500/10 border-emerald-500/20 hover:border-emerald-500/40",
@@ -45,13 +47,13 @@ export const ExperienceItem = ({
       {isLeft ? (
         <div className="hidden md:flex justify-start pl-8 order-3">
           <span className={`px-3 py-1 text-xs font-semibold rounded-full ${c.badge}`}>
-            {date}
+            {date[language]}
           </span>
         </div>
       ) : (
         <div className="hidden md:flex justify-end pr-8 order-1">
           <span className={`px-3 py-1 text-xs font-semibold rounded-full ${c.badge}`}>
-            {date}
+            {date[language]}
           </span>
         </div>
       )}
@@ -69,7 +71,7 @@ export const ExperienceItem = ({
           {/* Fecha móvil */}
           <div className="md:hidden mb-2">
             <span className={`px-2.5 py-0.5 text-xs font-semibold rounded-full ${c.badge}`}>
-              {date}
+              {date[language]}
             </span>
           </div>
 
@@ -79,7 +81,7 @@ export const ExperienceItem = ({
               <h3 className={`text-base md:text-lg font-semibold mb-1 ${c.text}`}>
                 {company}
               </h3>
-              <p className={`${c.text} text-xs md:text-sm font-medium`}>{role}</p>
+              <p className={`${c.text} text-xs md:text-sm font-medium`}>{role[language]}</p>
             </div>
             <div
               className={`w-9 h-9 ${c.icon} rounded-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform`}
@@ -90,7 +92,7 @@ export const ExperienceItem = ({
 
           {/* Descripción */}
           <p className="text-gray-300 text-xs md:text-sm mb-3 leading-snug">
-            {description}
+            {description[language]}
           </p>
 
           {/* Tecnologías */}
@@ -114,7 +116,7 @@ export const ExperienceItem = ({
       <IconComponent
         className={`w-3.5 h-3.5 ${c.text} mt-0.5 flex-shrink-0`}
       />
-      <span>{ach}</span>
+      <span>{ach[language]}</span>
     </div>
   );
 })}

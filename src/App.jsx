@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Portafolio from './pages/Portafolio';
 import ServicesPages from './pages/Services';
+import ProjectDetail from './pages/ProjectDetail';
+import { LanguageProvider } from './i18n/LanguageContext';
 import './App.css';
-import ProjectsShowcase from './components/Projects/ProjectsSection';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ function AnimatedRoutes() {
       <Routes location={location}>
         <Route path="/" element={<Portafolio />} />
         <Route path="/services" element={<ServicesPages />} />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
       </Routes>
     </motion.div>
   );
@@ -37,13 +39,12 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes location={location}>
-        <Route path="/projects" element={<ProjectsShowcase />} />
-      </Routes>
-      <ScrollToTop />
-      <AnimatedRoutes />
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <AnimatedRoutes />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 

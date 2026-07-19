@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Logo } from "./Logo";
 import { NavLinks } from "./NavLinks";
-import { CTAButton } from "./CTAButton";
+import { LanguageToggle } from "./LanguageToggle";
 import { MenuButton } from "./MenuButton";
 import { MobileMenu } from "./MobileMenu";
 import { links } from "../../data/links";
@@ -18,9 +18,9 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16">
           <Logo />
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             <NavLinks links={links} />
-            <CTAButton />
+            <LanguageToggle />
           </div>
           <MenuButton
             open={mobileMenuOpen}

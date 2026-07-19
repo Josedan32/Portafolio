@@ -1,6 +1,10 @@
 import { Briefcase, Zap, Target } from "lucide-react";
+import { useLanguage } from "../../i18n/useLanguage";
 
-export const HeroAvatar = () => (
+export const HeroAvatar = () => {
+  const { t } = useLanguage();
+
+  return (
   <div className="relative -mt-8">
     <div className="relative w-full max-w-sm mx-auto">
       {/* Glow Effect */}
@@ -55,7 +59,7 @@ export const HeroAvatar = () => (
         className="absolute -left-3 top-1/4 bg-gray-800 border border-green-500/30 px-3 py-1.5 rounded-md shadow-lg animate-fade-in"
         style={{ animationDelay: "0.5s" }}
       >
-        <div className="text-[10px] text-gray-400">Especialización</div>
+        <div className="text-[10px] text-gray-400">{t("heroAvatar.specializationLabel")}</div>
         <div className="text-xs font-semibold text-green-400">
           Node.js + Python
         </div>
@@ -64,9 +68,10 @@ export const HeroAvatar = () => (
         className="absolute -right-3 top-2/3 bg-gray-800 border border-emerald-500/30 px-3 py-1.5 rounded-md shadow-lg animate-fade-in"
         style={{ animationDelay: "1s" }}
       >
-        <div className="text-[10px] text-gray-400">Entrega</div>
-        <div className="text-xs font-semibold text-emerald-400">3-7 días</div>
+        <div className="text-[10px] text-gray-400">{t("heroAvatar.deliveryLabel")}</div>
+        <div className="text-xs font-semibold text-emerald-400">{t("heroAvatar.deliveryValue")}</div>
       </div>
     </div>
   </div>
-);
+  );
+};

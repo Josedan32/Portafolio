@@ -1,6 +1,5 @@
 export const links = [
-    { href: "#aboutMe", label: "Sobre mi" },
-    { href: "#servicios", label: "Servicios" },
-    { href: "#proyectos", label: "Proyectos" },
-    { href: "#experiencia", label: "Experiencia" },
+    { href: "#aboutMe", label: { es: "Sobre mi", en: "About me" } },
+    { href: "#proyectos", label: { es: "Proyectos", en: "Projects" } },
+    { href: "#experiencia", label: { es: "Experiencia", en: "Experience" } },
   ];

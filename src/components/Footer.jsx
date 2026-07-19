@@ -1,7 +1,11 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Globe } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
+import { ContactInfo } from './ContactInfo';
+import { useLanguage } from '../i18n/useLanguage';
 
 export const Footer = () => {
+  const { t } = useLanguage();
+
   const socialLinks = [
     { icon: <Github className="w-5 h-5" />, href: 'https://github.com/Josedan32', label: 'GitHub' },
     { icon: <Linkedin className="w-5 h-5" />, href: 'https://www.linkedin.com/in/jose-daniel-hernandez-cano-734b86207', label: 'LinkedIn' },
@@ -26,12 +30,14 @@ export const Footer = () => {
           ))}
         </div>
 
+        <ContactInfo className="justify-center text-sm text-gray-400" />
+
         <div>
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} <span className="font-semibold text-white">Daniel</span> — Desarrollador Backend & IA.
+            © {new Date().getFullYear()} <span className="font-semibold text-white">Daniel</span> {t("footer.copyrightSuffix")}
           </p>
           <p className="text-gray-500 text-xs mt-2">
-            Construido con React, Tailwind y visión de futuro 💡
+            {t("footer.tagline")}
           </p>
         </div>
       </div>

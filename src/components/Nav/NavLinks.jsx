@@ -1,9 +1,11 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
+import { useLanguage } from '../../i18n/useLanguage';
 
 export const NavLinks = ({ links = [], className = "" }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { language } = useLanguage();
   const [activeLink, setActiveLink] = useState('');
   const [indicatorStyle, setIndicatorStyle] = useState({});
   const linksRef = useRef({});
@@ -86,7 +88,7 @@ export const NavLinks = ({ links = [], className = "" }) => {
             ${className}
           `}
         >
-          {label}
+          {label[language]}
         </a>
       ))}
       <div 
