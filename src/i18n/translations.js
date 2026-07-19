@@ -40,7 +40,7 @@ export const translations = {
       },
       experience: {
         title: "Experiencia",
-        yearsValue: "2 años",
+        yearsValue: "+3 años",
         bodyMid: " desarrollando soluciones backend robustas con enfoque en ",
         aiHighlight: "Inteligencia Artificial",
         bodyEnd:
@@ -154,7 +154,7 @@ export const translations = {
       },
       experience: {
         title: "Experience",
-        yearsValue: "2 years",
+        yearsValue: "+3 years",
         bodyMid: " building robust backend solutions focused on ",
         aiHighlight: "Artificial Intelligence",
         bodyEnd:
