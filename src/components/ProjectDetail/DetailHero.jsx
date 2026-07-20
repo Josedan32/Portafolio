@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { BrowserFrame } from "./BrowserFrame";
+import { HeroDeviceShowcase } from "./HeroDeviceShowcase";
 import { useLanguage } from "../../i18n/useLanguage";
 
 export const DetailHero = ({ project }) => {
@@ -27,6 +28,11 @@ export const DetailHero = ({ project }) => {
           <span className="px-3 py-1 bg-gray-800/60 border border-gray-700 rounded-full text-xs font-medium text-gray-400">
             {project.role[language]}
           </span>
+          {project.year && (
+            <span className="px-3 py-1 bg-gray-800/60 border border-gray-700 rounded-full text-xs font-medium text-gray-400">
+              {project.year}
+            </span>
+          )}
         </div>
 
         <h1 className="text-3xl md:text-5xl font-bold mb-3">{project.title}</h1>
@@ -47,47 +53,30 @@ export const DetailHero = ({ project }) => {
               <ExternalLink className="w-4 h-4" />
             </a>
           )}
-          {project.links.repos.infra && (
+          {project.links.repos.map((repo) => (
             <a
-              href={project.links.repos.infra}
+              key={repo.url}
+              href={repo.url}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 text-sm bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:border-green-600 rounded-full font-semibold transition-all duration-300 flex items-center gap-1.5"
             >
               <Github className="w-4 h-4" />
-              infra
+              {repo.label}
             </a>
-          )}
-          {project.links.repos.backend && (
-            <a
-              href={project.links.repos.backend}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 text-sm bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:border-green-600 rounded-full font-semibold transition-all duration-300 flex items-center gap-1.5"
-            >
-              <Github className="w-4 h-4" />
-              backend
-            </a>
-          )}
-          {project.links.repos.frontend && (
-            <a
-              href={project.links.repos.frontend}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 text-sm bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:border-green-600 rounded-full font-semibold transition-all duration-300 flex items-center gap-1.5"
-            >
-              <Github className="w-4 h-4" />
-              frontend
-            </a>
-          )}
+          ))}
         </div>
       </div>
 
-      <BrowserFrame
-        src={project.heroScreenshot?.src}
-        alt={project.title}
-        label={project.heroScreenshot?.label}
-      />
+      {project.heroDevices ? (
+        <HeroDeviceShowcase project={project} />
+      ) : (
+        <BrowserFrame
+          src={project.heroScreenshot?.src}
+          alt={project.title}
+          label={project.heroScreenshot?.label}
+        />
+      )}
     </div>
   </div>
   );

@@ -4,6 +4,7 @@ import { Navbar } from "../components/Nav/Navbar";
 import { Footer } from "../components/Footer";
 import { DetailHero } from "../components/ProjectDetail/DetailHero";
 import { MetricsBanner } from "../components/ProjectDetail/MetricsBanner";
+import { VideoShowcase } from "../components/ProjectDetail/VideoShowcase";
 import { FeatureShowcase } from "../components/ProjectDetail/FeatureShowcase";
 import { DemoAccess } from "../components/ProjectDetail/DemoAccess";
 import { TechSheet } from "../components/ProjectDetail/TechSheet";
@@ -45,6 +46,7 @@ export default function ProjectDetail() {
       <MetricsBanner project={project} />
 
       <div className="max-w-5xl mx-auto px-4 md:px-8">
+        {!project.links.demo && <VideoShowcase project={project} />}
         <FeatureShowcase project={project} />
         <DemoAccess project={project} />
         <TechSheet project={project} />

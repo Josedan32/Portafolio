@@ -3,7 +3,7 @@ import { GitBranch, Layers, ShieldCheck, Route, Cpu } from "lucide-react";
 import { TechCategory } from "../About/TechCategory";
 import { useLanguage } from "../../i18n/useLanguage";
 
-const icons = { GitBranch, Layers, ShieldCheck, Route };
+const icons = { GitBranch, Layers, ShieldCheck, Route, Cpu };
 
 export const TechSheet = ({ project }) => {
   const { language, t } = useLanguage();
@@ -20,10 +20,21 @@ export const TechSheet = ({ project }) => {
             {t("projectDetail.techSheet.stackTitle")}
           </h4>
           <div className="space-y-3">
-            <TechCategory color="green" title={t("projectDetail.techSheet.categories.backend")} techs={project.stack.backend} />
-            <TechCategory color="blue" title={t("projectDetail.techSheet.categories.frontend")} techs={project.stack.frontend} />
-            <TechCategory color="orange" title={t("projectDetail.techSheet.categories.devops")} techs={project.stack.devops} />
-            <TechCategory color="blue" title={t("projectDetail.techSheet.categories.quality")} techs={project.stack.quality} />
+            {project.stack.backend?.length > 0 && (
+              <TechCategory color="green" title={t("projectDetail.techSheet.categories.backend")} techs={project.stack.backend} />
+            )}
+            {project.stack.frontend?.length > 0 && (
+              <TechCategory color="blue" title={t("projectDetail.techSheet.categories.frontend")} techs={project.stack.frontend} />
+            )}
+            {project.stack.ai?.length > 0 && (
+              <TechCategory color="green" title={t("projectDetail.techSheet.categories.ai")} techs={project.stack.ai} />
+            )}
+            {project.stack.devops?.length > 0 && (
+              <TechCategory color="orange" title={t("projectDetail.techSheet.categories.devops")} techs={project.stack.devops} />
+            )}
+            {project.stack.quality?.length > 0 && (
+              <TechCategory color="blue" title={t("projectDetail.techSheet.categories.quality")} techs={project.stack.quality} />
+            )}
           </div>
         </div>
 

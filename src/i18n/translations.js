@@ -89,6 +89,11 @@ export const translations = {
         heading: "¡Pruébalo tú mismo!",
         subtitle: "Entra a la demo en vivo con una cuenta de prueba, sin registro.",
       },
+      videoShowcase: {
+        heading: "Video demo",
+        subtitle: "Este proyecto no está desplegado en línea — así es como funciona en la práctica.",
+        comingSoon: "Video próximamente",
+      },
       techSheet: {
         title: "Ficha técnica",
         stackTitle: "Stack y herramientas",
@@ -96,6 +101,7 @@ export const translations = {
         categories: {
           backend: "Backend",
           frontend: "Frontend",
+          ai: "IA / Datos",
           devops: "DevOps",
           quality: "Calidad y gestión",
         },
@@ -203,6 +209,11 @@ export const translations = {
         heading: "Try it yourself!",
         subtitle: "Log into the live demo with a test account, no signup required.",
       },
+      videoShowcase: {
+        heading: "Demo video",
+        subtitle: "This project isn't deployed online — here's how it works in practice.",
+        comingSoon: "Video coming soon",
+      },
       techSheet: {
         title: "Technical sheet",
         stackTitle: "Stack & tools",
@@ -210,6 +221,7 @@ export const translations = {
         categories: {
           backend: "Backend",
           frontend: "Frontend",
+          ai: "AI / Data",
           devops: "DevOps",
           quality: "Quality & management",
         },
