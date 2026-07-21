@@ -130,7 +130,7 @@ export const projects = [
     links: {
       demo: "https://aura-health-frontend-one.vercel.app/",
       repos: [
-        { label: "infra", url: "https://github.com/Josedan32/infra" },
+        { label: "infra", url: "https://github.com/Josedan32/aura-health-infra" },
         { label: "backend", url: "https://github.com/Josedan32/aura-health-backend" },
         { label: "frontend", url: "https://github.com/Josedan32/aura-health-frontend" },
       ],
