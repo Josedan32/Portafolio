@@ -15,16 +15,16 @@ export const HeroIntro = () => {
 
       <h1 className="text-4xl md:text-6xl font-bold leading-tight">
         {t("hero.greeting")}{" "}
-        <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 bg-clip-text text-transparent">
+        <span className="">
           Daniel
         </span>
       </h1>
 
       <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
         {t("hero.description.prefix")}
-        <span className="text-green-400 font-semibold">{t("hero.description.highlight1")}</span>
+        <span className="">{t("hero.description.highlight1")}</span>
         {t("hero.description.mid")}
-        <span className="text-emerald-400 font-semibold">{t("hero.description.highlight2")}</span>.
+        <span className="">{t("hero.description.highlight2")}</span>.
       </p>
 
       <p className="text-base text-gray-400 max-w-lg">{t("hero.tagline")}</p>

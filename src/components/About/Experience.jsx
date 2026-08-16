@@ -13,9 +13,9 @@ export const AboutExperience = () => {
         <h3 className="text-xl font-bold text-white">{t("about.experience.title")}</h3>
       </div>
       <p className="text-gray-300 leading-relaxed">
-        <span className="text-green-400 font-semibold">{t("about.experience.yearsValue")}</span>
+        <span className="">{t("about.experience.yearsValue")}</span>
         {t("about.experience.bodyMid")}
-        <span className="text-emerald-400 font-semibold">{t("about.experience.aiHighlight")}</span>
+        <span className="">{t("about.experience.aiHighlight")}</span>
         {t("about.experience.bodyEnd")}
       </p>
     </div>

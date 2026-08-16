@@ -21,12 +21,12 @@ export const AboutPhilosophy = ({ compact = false }) => {
         </svg>
       </div>
       <p
-        className={`text-gray-200 leading-relaxed font-medium italic ${
+        className={`text-gray-200 leading-relaxed font-medium ${
           compact ? "text-lg md:text-xl" : "text-xl md:text-2xl"
         }`}
       >
         {t("about.philosophy.prefix")}{" "}
-        <span className="text-green-400">{t("about.philosophy.highlight")}</span>
+        <span className="">{t("about.philosophy.highlight")}</span>
         {t("about.philosophy.suffix")}
       </p>
     </div>

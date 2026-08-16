@@ -12,7 +12,7 @@ export const AboutVision = () => {
       </div>
       <p className="text-gray-300 leading-relaxed">
         {t("about.vision.prefix")}{" "}
-        <span className="text-green-400 font-semibold">{t("about.vision.highlight")}</span>
+        <span className="">{t("about.vision.highlight")}</span>
         {t("about.vision.suffix")}
       </p>
     </div>

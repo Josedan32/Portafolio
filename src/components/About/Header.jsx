@@ -10,7 +10,7 @@ export const AboutHeader = () => {
       </span>
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
         {t("about.title")}{" "}
-        <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+        <span className="">
           {t("about.titleHighlight")}
         </span>
       </h2>
