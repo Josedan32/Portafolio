@@ -1,5 +1,145 @@
 export const projects = [
   {
+    slug: "asistentes-academicos",
+    title: "Asistentes Académicos",
+    tagline: {
+      es: "Semillero COGNIA · Agentes que responden la malla curricular con datos reales, no con texto plausible",
+      en: "COGNIA Research Group · Agents that answer curriculum questions from real data, never plausible text",
+    },
+    status: { es: "En desarrollo", en: "In development" },
+    role: { es: "Desarrollador Full-stack", en: "Full-stack Developer" },
+    year: "2026",
+    summary: {
+      es: "Proyecto del Semillero de Investigación COGNIA de la Institución Universitaria Pascual Bravo, pensado para que cualquier estudiante de la institución — sin importar su programa académico — pregunte por su malla curricular, prerrequisitos y material de curso a un agente que responde consultando la base de datos a través de herramientas, nunca generando texto plausible. Un prerrequisito inventado puede hacer que alguien se matricule mal, así que el agente está diseñado para abstenerse antes que adivinar — y cada respuesta muestra en una tarjeta qué herramienta consultó y cuántas filas devolvió.",
+      en: "A project from the COGNIA Research Group at Institución Universitaria Pascual Bravo, built so any student at the institution — regardless of their academic program — can ask about their curriculum, prerequisites and course material to an agent that answers by querying the database through tools, never by generating plausible text. A fabricated prerequisite can get a student to enroll incorrectly, so the agent is built to abstain rather than guess — and every answer shows a card with which tool it called and how many rows it returned.",
+    },
+
+    heroScreenshot: { label: "asistentes-academicos.app/chat", src: '' },
+
+    showcase: [
+      {
+        title: {
+          es: "Cada respuesta muestra de dónde salió",
+          en: "Every answer shows where it came from",
+        },
+        description: {
+          es: "Una tarjeta de transparencia muestra qué herramienta consultó el agente, cuántas filas devolvió y cuánto tardó — nunca expone los datos crudos del estudiante, solo la descripción en español y las métricas. El estudiante puede confiar en la respuesta o pedir la fuente.",
+          en: "A transparency card shows which tool the agent called, how many rows it returned and how long it took — it never exposes the student's raw data, only a plain-language description and the timing/row-count metadata. The student can trust the answer or ask for the source.",
+        },
+        screenshot: { label: "asistentes-academicos.app/chat", src: '' },
+        reverse: false,
+      },
+      {
+        title: {
+          es: "Cinco modos, un mismo asistente",
+          en: "Five modes, one assistant",
+        },
+        description: {
+          es: "Consulta, Estudio, Práctica, Examen y Resumen cambian el enfoque del mismo agente sin cambiar de herramientas: en modo Práctica genera un ejercicio y evalúa la respuesta escrita del estudiante en el momento.",
+          en: "Consulta, Estudio, Práctica, Examen and Resumen reframe the same agent without swapping tools: in Práctica mode it generates an exercise and grades the student's typed answer on the spot.",
+        },
+        screenshot: { label: "asistentes-academicos.app/chat", src: '' },
+        reverse: true,
+      },
+      {
+        title: {
+          es: "La malla curricular es un tablero, no una tabla",
+          en: "The curriculum is a board, not a table",
+        },
+        description: {
+          es: "Coordinación arrastra materias entre semestres con validación en tiempo real: no se puede mover una materia antes de su prerrequisito ni después de una materia que depende de ella. Los cursos compartidos entre programas quedan marcados aparte.",
+          en: "Coordination staff drag courses between semesters with real-time validation: a course can't be moved earlier than its prerequisite or later than a course that depends on it. Courses shared across programs are flagged separately.",
+        },
+        screenshot: { label: "asistentes-academicos.app/admin/curriculum", src: '' },
+        reverse: false,
+      },
+    ],
+
+    extraFeatures: [
+      { es: "Streaming de respuesta token a token vía SSE", en: "Token-by-token response streaming over SSE" },
+      { es: "Tutor de material de curso con búsqueda semántica (RAG)", en: "Course-material tutor with semantic search (RAG)" },
+      { es: "Pizarra de apuntes a mano alzada dentro del chat", en: "Freehand scratch canvas inside the chat" },
+      { es: "Modelo local (Ollama) con fallback a la nube (Groq)", en: "Local model (Ollama) with a cloud fallback (Groq)" },
+    ],
+
+    architectureHighlights: [
+      {
+        icon: "ShieldCheck",
+        title: { es: "Identidad inyectada en servidor", en: "Server-injected identity" },
+        description: {
+          es: "program_id y student_id nunca los provee el modelo: se inyectan desde la sesión autenticada antes de ejecutar cualquier herramienta, para que un prompt no pueda pedir datos de otro estudiante.",
+          en: "program_id and student_id are never model-supplied: they're injected from the authenticated session before any tool runs, so a prompt can't reach into another student's data.",
+        },
+      },
+      {
+        icon: "Layers",
+        title: { es: "Arquitectura por capas, verificada por tests", en: "Layered architecture enforced by tests" },
+        description: {
+          es: "domain → application → infrastructure/api, con un test que falla el build si domain importa un framework o application importa infraestructura.",
+          en: "domain → application → infrastructure/api, with a test that fails the build if domain imports a framework or application imports infrastructure.",
+        },
+      },
+      {
+        icon: "GitBranch",
+        title: { es: "Agente escrito a mano, sin framework", en: "Hand-written agent loop, no framework" },
+        description: {
+          es: "Sin LangChain ni LlamaIndex: el loop de tool-calling es el objeto de estudio del proyecto, y un framework lo haría imposible de medir.",
+          en: "No LangChain or LlamaIndex: the tool-calling loop is the object of study, and a framework would make it unmeasurable.",
+        },
+      },
+      {
+        icon: "Route",
+        title: { es: "Redis serializa la inferencia", en: "Redis serializes inference" },
+        description: {
+          es: "4 GB de VRAM alcanzan para una sola inferencia a la vez; Redis hace de cola FIFO entre todos los procesos worker de uvicorn.",
+          en: "4 GB of VRAM only fits one inference at a time; Redis acts as a FIFO queue across every uvicorn worker process.",
+        },
+      },
+    ],
+
+    stack: {
+      backend: [
+        "Python 3.13",
+        "FastAPI (async)",
+        "SQLAlchemy 2.0 + Alembic",
+        "SQLite",
+        "Redis",
+        "Ollama (qwen2.5:3b)",
+        "Groq (fallback en la nube)",
+        "Pydantic v2",
+        "PyJWT + argon2-cffi",
+      ],
+      frontend: [
+        "Next.js 15",
+        "React 19",
+        "TypeScript",
+        "TanStack Query",
+        "Radix UI",
+        "dnd-kit",
+        "Tailwind CSS v4",
+        "react-markdown + KaTeX",
+      ],
+      devops: ["Docker Compose (Redis)"],
+      quality: ["pytest + pytest-asyncio (300 tests)", "Vitest + Testing Library (115 tests)", "ruff", "mypy --strict", "Tests de arquitectura por capas"],
+    },
+
+    metrics: [
+      { label: { es: "Tests automatizados", en: "Automated tests" }, value: "415+" },
+      { label: { es: "Herramientas del agente", en: "Agent tools" }, value: "6" },
+      { label: { es: "Registros de decisión (ADR)", en: "Decision records (ADRs)" }, value: "8" },
+      { label: { es: "Modos de asistente", en: "Assistant modes" }, value: "5" },
+    ],
+
+    links: {
+      demo: null,
+      repos: [
+        { label: "asistentes-academicos", url: "https://github.com/Josedan32/asistentes-academicos" },
+      ],
+    },
+
+    demoAccess: null,
+  },
+  {
     slug: "aura-health",
     title: "Aura Health",
     tagline: {
