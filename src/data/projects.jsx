@@ -14,7 +14,7 @@ export const projects = [
       en: "A project from the COGNIA Research Group at Institución Universitaria Pascual Bravo, built so any student at the institution — regardless of their academic program — can ask about their curriculum, prerequisites and course material to an agent that answers by querying the database through tools, never by generating plausible text. A fabricated prerequisite can get a student to enroll incorrectly, so the agent is built to abstain rather than guess — and every answer shows a card with which tool it called and how many rows it returned.",
     },
 
-    heroScreenshot: { label: "asistentes-academicos.app/chat", src: '' },
+    heroScreenshot: { label: "asistentes-academicos.app/chat", src: '/images/asistentes-academicos-1.png' },
 
     showcase: [
       {
@@ -26,7 +26,7 @@ export const projects = [
           es: "Una tarjeta de transparencia muestra qué herramienta consultó el agente, cuántas filas devolvió y cuánto tardó — nunca expone los datos crudos del estudiante, solo la descripción en español y las métricas. El estudiante puede confiar en la respuesta o pedir la fuente.",
           en: "A transparency card shows which tool the agent called, how many rows it returned and how long it took — it never exposes the student's raw data, only a plain-language description and the timing/row-count metadata. The student can trust the answer or ask for the source.",
         },
-        screenshot: { label: "asistentes-academicos.app/chat", src: '' },
+        screenshot: { label: "asistentes-academicos.app/chat", src: '/images/asistentes-academicos-2.png' },
         reverse: false,
       },
       {
@@ -38,7 +38,7 @@ export const projects = [
           es: "Consulta, Estudio, Práctica, Examen y Resumen cambian el enfoque del mismo agente sin cambiar de herramientas: en modo Práctica genera un ejercicio y evalúa la respuesta escrita del estudiante en el momento.",
           en: "Consulta, Estudio, Práctica, Examen and Resumen reframe the same agent without swapping tools: in Práctica mode it generates an exercise and grades the student's typed answer on the spot.",
         },
-        screenshot: { label: "asistentes-academicos.app/chat", src: '' },
+        screenshot: { label: "asistentes-academicos.app/chat", src: '/images/asistentes-academicos-3.png' },
         reverse: true,
       },
       {
@@ -50,7 +50,7 @@ export const projects = [
           es: "Coordinación arrastra materias entre semestres con validación en tiempo real: no se puede mover una materia antes de su prerrequisito ni después de una materia que depende de ella. Los cursos compartidos entre programas quedan marcados aparte.",
           en: "Coordination staff drag courses between semesters with real-time validation: a course can't be moved earlier than its prerequisite or later than a course that depends on it. Courses shared across programs are flagged separately.",
         },
-        screenshot: { label: "asistentes-academicos.app/admin/curriculum", src: '' },
+        screenshot: { label: "asistentes-academicos.app/admin/curriculum", src: '/images/asistentes-academicos-4.png' },
         reverse: false,
       },
     ],
