@@ -46,7 +46,7 @@ export default function ProjectDetail() {
       <MetricsBanner project={project} />
 
       <div className="max-w-5xl mx-auto px-4 md:px-8">
-        {!project.links.demo && <VideoShowcase project={project} />}
+        {!project.links.demo && project.demoVideo && <VideoShowcase project={project} />}
         <FeatureShowcase project={project} />
         <DemoAccess project={project} />
         <TechSheet project={project} />
