@@ -140,6 +140,154 @@ export const projects = [
     demoAccess: null,
   },
   {
+    slug: "family-hub",
+    title: "Family Hub",
+    tagline: {
+      es: "Sistema operativo del hogar: finanzas, aportes, gastos y tareas, detrás de un modelo de privacidad por miembro",
+      en: "A household operating system: finances, contributions, chores and goals, behind a per-member privacy model",
+    },
+    status: { es: "En desarrollo", en: "In development" },
+    role: { es: "Desarrollador Full-stack", en: "Full-stack Developer" },
+    year: "2026",
+    summary: {
+      es: "Reemplaza la mezcla de hojas de cálculo y notas sueltas que usa una familia para llevar sus finanzas compartidas por una PWA centralizada, donde cada miembro decide cuánto ve el resto de sus ingresos, gastos, ahorros y deudas — público, resumen o privado, campo por campo. El dinero nunca es un float: cada monto vive en enteros de unidad mínima, y un aporte al hogar siempre se refleja como el mismo movimiento en ambos lados de la transacción, en la misma transacción de base de datos.",
+      en: "Replaces the mix of spreadsheets and scattered notes a family uses to track shared finances with a centralized PWA, where every member decides how much of their income, expenses, savings and debts the rest of the household can see — public, summary or private, field by field. Money is never a float: every amount lives as an integer in minor units, and a household contribution always mirrors as the same movement on both sides of the transaction, inside one database transaction.",
+    },
+
+    heroDevices: {
+      desktop: { label: "family-hub.app/", src: '/images/family-1.png' },
+      mobile: [
+        { label: "family-hub.app/", src: '/images/family-mobile-1.png' },
+        { label: "family-hub.app/aportes", src: '/images/family-mobile-2.png' },
+      ],
+    },
+
+    showcase: [
+      {
+        title: {
+          es: "Cada monto tiene su propio nivel de privacidad",
+          en: "Every amount has its own privacy level",
+        },
+        description: {
+          es: "Ingresos, gastos, ahorros y deudas se configuran por separado como públicos, resumen o privados. Los totales del hogar siempre incluyen a todos — excluir a un miembro privado del total rompería el dashboard y además delataría, con el cambio, que alguien ajustó su privacidad.",
+          en: "Income, expenses, savings and debts are each configured independently as public, summary or private. Household totals always include everyone — excluding a private member would break the dashboard and, worse, the shift itself would reveal that someone just changed their privacy setting.",
+        },
+        screenshot: { label: "family-hub.app/finanzas", src: '/images/family-2.png' },
+        reverse: false,
+      },
+      {
+        title: {
+          es: "Privacidad por campo, no por pantalla",
+          en: "Privacy per field, not per screen",
+        },
+        description: {
+          es: "Cada miembro decide, campo por campo, si el resto del hogar ve el detalle, solo el resumen o nada. La regla es absoluta: ningún rol —tampoco el admin— ve más allá de lo que esa configuración permite.",
+          en: "Each member decides, field by field, whether the rest of the household sees the detail, only a summary, or nothing. The rule is absolute: no role — not even the admin — ever sees past what that setting allows.",
+        },
+        screenshot: { label: "family-hub.app/ajustes/privacidad", src: '/images/family-3.png' },
+        reverse: true,
+      },
+      {
+        title: {
+          es: "Tareas del hogar con reparto justo, no por turnos",
+          en: "Household chores split fairly, not by rotation",
+        },
+        description: {
+          es: "El algoritmo de asignación compensa a quien estuvo ausente dándole más carga cuando vuelve, en vez de llevar un contador de 'deuda' aparte. El desempate entre candidatos es aleatorio a propósito: ordenar por nombre o antigüedad le asignaría la misma tarea a la misma persona para siempre.",
+          en: "The assignment algorithm compensates an absent member by giving them more load when they return, instead of keeping a separate 'debt' counter. The tie-break between candidates is deliberately random — sorting by name or seniority would hand the same chore to the same person forever.",
+        },
+        screenshot: { label: "family-hub.app/tareas", src: '/images/family-4.png' },
+        reverse: false,
+      },
+    ],
+
+    extraFeatures: [
+      { es: "PWA instalable, offline de solo lectura", en: "Installable PWA, read-only offline" },
+      { es: "Préstamos entre miembros con doble registro", en: "Member-to-member loans with double-entry ledger" },
+      { es: "Metas de ahorro con prioridad y retiro como ingreso", en: "Priority savings goals, withdrawals count as income" },
+      { es: "Cliente TypeScript generado desde OpenAPI, nunca editado a mano", en: "OpenAPI-generated TypeScript client, never hand-edited" },
+    ],
+
+    architectureHighlights: [
+      {
+        icon: "ShieldCheck",
+        title: { es: "Resolver de visibilidad como dependencia", en: "Visibility resolver as a dependency" },
+        description: {
+          es: "Cada endpoint que toca datos de un miembro declara su dependencia de visibilidad en la firma de la ruta, no como un helper que hay que acordarse de llamar — el CI falla si falta.",
+          en: "Every endpoint touching member data declares its visibility dependency in the route signature — not a helper someone has to remember to call. CI fails if it's missing.",
+        },
+      },
+      {
+        icon: "Layers",
+        title: { es: "Capas en una sola dirección", en: "Strictly one-directional layering" },
+        description: {
+          es: "routers → services → repositories → models. Los routers nunca tocan SQL; el household scoping se aplica en un único lugar de los repositorios, para que no se olvide en otro.",
+          en: "routers → services → repositories → models. Routers never touch SQL; household scoping is applied in exactly one place inside the repositories, so it can't be forgotten elsewhere.",
+        },
+      },
+      {
+        icon: "GitBranch",
+        title: { es: "Detalle y resumen, modelos distintos", en: "Detail and summary are separate models" },
+        description: {
+          es: "Nunca un solo modelo Pydantic con campos excluidos al serializar: un 'exclude' olvidado sería una fuga de datos, y con dos tipos separados se vuelve un error de tipos en compilación.",
+          en: "Never one Pydantic model with fields excluded at serialization time: a forgotten 'exclude' would be a data breach, and with two separate types it becomes a compile-time type error instead.",
+        },
+      },
+      {
+        icon: "Route",
+        title: { es: "Contrato generado, sin diferencias posibles", en: "Generated contract, no drift possible" },
+        description: {
+          es: "FastAPI emite OpenAPI 3.1 y un paso de build genera el cliente TypeScript del frontend; CI falla si regenerarlo produce una diferencia, así un backend que rompe al frontend es un build failure, no una sorpresa en producción.",
+          en: "FastAPI emits OpenAPI 3.1 and a build step generates the frontend's TypeScript client; CI fails if regenerating it produces a diff, so a backend change that breaks the frontend is a build failure, not a runtime surprise.",
+        },
+      },
+    ],
+
+    stack: {
+      backend: [
+        "Python 3.13",
+        "FastAPI (async)",
+        "SQLAlchemy 2.0 + Alembic",
+        "PostgreSQL 16",
+        "PyJWT + argon2-cffi",
+        "Pydantic v2",
+      ],
+      frontend: [
+        "Next.js 15 (App Router)",
+        "React 18",
+        "TypeScript",
+        "TanStack Query",
+        "Tailwind CSS v4",
+        "PWA (manifest + service worker)",
+      ],
+      devops: ["Docker Compose (Postgres)"],
+      quality: ["pytest + pytest-asyncio (430+ tests)", "Vitest + Testing Library", "Playwright (E2E + a11y)", "ruff", "mypy --strict"],
+    },
+
+    metrics: [
+      { label: { es: "Tests automatizados", en: "Automated tests" }, value: "430+" },
+      { label: { es: "Migraciones de base de datos", en: "Database migrations" }, value: "26" },
+      { label: { es: "Módulos funcionales", en: "Functional modules" }, value: "6" },
+      { label: { es: "Niveles de visibilidad por campo", en: "Visibility levels per field" }, value: "3" },
+    ],
+
+    links: {
+      demo: null,
+      repos: [
+        { label: "Family-App", url: "https://github.com/Josedan32/Family-App" },
+      ],
+    },
+
+    demoAccess: {
+      email: "daniel@example.com",
+      password: "correct-horse-battery",
+      note: {
+        es: "Cuenta de demostración con datos sintéticos (seed) de la casa 'Familia Hernández'. No contiene información financiera real — uso exclusivo de entorno de desarrollo/demo.",
+        en: "Demo account with synthetic (seed) data for the 'Familia Hernández' household. Contains no real financial information — for development/demo environment use only.",
+      },
+    },
+  },
+  {
     slug: "aura-health",
     title: "Aura Health",
     tagline: {
