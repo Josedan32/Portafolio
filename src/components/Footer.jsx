@@ -34,7 +34,10 @@ export const Footer = () => {
 
         <div>
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} <span className="font-semibold text-white">Daniel</span> {t("footer.copyrightSuffix")}
+            © {new Date().getFullYear()} <span className="font-semibold text-white">Jose Daniel Hernandez Cano</span> {t("footer.copyrightSuffix")}
+          </p>
+          <p className="text-gray-400 text-sm mt-2">
+            {t("footer.location")}
           </p>
           <p className="text-gray-500 text-xs mt-2">
             {t("footer.tagline")}

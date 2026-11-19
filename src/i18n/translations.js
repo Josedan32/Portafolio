@@ -109,6 +109,7 @@ export const translations = {
     },
     footer: {
       copyrightSuffix: "— Desarrollador Backend & IA.",
+      location: "Medellín, Antioquia, Colombia",
       tagline: "Construido con React, Tailwind y visión de futuro 💡",
     },
     contact: {
@@ -229,6 +230,7 @@ export const translations = {
     },
     footer: {
       copyrightSuffix: "— Backend & AI Developer.",
+      location: "Medellín, Antioquia, Colombia",
       tagline: "Built with React, Tailwind, and a vision for the future 💡",
     },
     contact: {
